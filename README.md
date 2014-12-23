@@ -1,9 +1,9 @@
-ioleggo
+ioLeggo
 =======
 
 Un programma per allenare la lettura
 
-
-# Contatto
+Contatto
+--------
 ioleggo.ticino@gmail.com
 

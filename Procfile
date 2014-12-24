@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -Dfile.encoding=UTF-8 -Dspring.profiles.active=heroku -jar target/*.jar

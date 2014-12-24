@@ -1,0 +1,21 @@
+#container {
+    padding-top:100px;
+    padding-bottom:50px;
+}
+
+#footer {
+    padding:10px;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+.reading-area {
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}

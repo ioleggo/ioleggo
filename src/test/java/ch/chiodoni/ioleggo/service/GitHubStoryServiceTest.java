@@ -1,5 +1,6 @@
 package ch.chiodoni.ioleggo.service;
 
+import ch.chiodoni.ioleggo.model.ResourceNotFoundException;
 import ch.chiodoni.ioleggo.model.StoryFolder;
 import org.junit.Assert;
 import org.junit.Test;
@@ -23,6 +24,11 @@ public class GitHubStoryServiceTest {
         String story = gitHubStoryServiceFactory().findStory(storyFolders.get(0).getName(), storyFolders.get(0).getTitles().get(0));
         Assert.assertNotNull(story);
         Assert.assertTrue(story.length() > 0);
+    }
+
+    @Test(expected = ResourceNotFoundException.class)
+    public void testFindNotExistingStory() {
+        gitHubStoryServiceFactory().findStory("does not exist", "does not exist either");
     }
 
     private GitHubStoryService gitHubStoryServiceFactory() {

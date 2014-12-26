@@ -1,0 +1,31 @@
+package ch.chiodoni.ioleggo.service;
+
+import ch.chiodoni.ioleggo.model.StoryFolder;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.util.List;
+
+public class GitHubStoryServiceTest {
+
+    @Test
+    public void testFindStoryFolders() {
+        List<StoryFolder> storyFolders = gitHubStoryServiceFactory().findStoryFolders();
+        Assert.assertNotNull(storyFolders);
+        Assert.assertTrue(storyFolders.size() > 0);
+    }
+
+    @Test
+    public void testFindStory() {
+        List<StoryFolder> storyFolders = gitHubStoryServiceFactory().findStoryFolders();
+        Assert.assertNotNull(storyFolders);
+        Assert.assertTrue(storyFolders.size() > 0);
+        String story = gitHubStoryServiceFactory().findStory(storyFolders.get(0).getName(), storyFolders.get(0).getTitles().get(0));
+        Assert.assertNotNull(story);
+        Assert.assertTrue(story.length() > 0);
+    }
+
+    private GitHubStoryService gitHubStoryServiceFactory() {
+        return new GitHubStoryService("https://api.github.com", "https://raw.githubusercontent.com", "ioleggo", "scuolaticino2014", "ioleggo", "storie", "storie");
+    }
+}

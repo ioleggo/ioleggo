@@ -108,7 +108,7 @@ public class GitHubStoryService {
                     public Object fromBody(TypedInput body, Type type) throws ConversionException {
                         try (BufferedReader reader = new BufferedReader(new InputStreamReader(body.in()))) {
                             return reader.lines().reduce(
-                                    (story, line) -> story.concat(line).concat(" <br> "))
+                                    (story, line) -> story.concat(" <br> ").concat(line))
                                     .orElseThrow(ResourceNotFoundException::new);
                         } catch (Exception e) {
                             throw new ConversionException(e);

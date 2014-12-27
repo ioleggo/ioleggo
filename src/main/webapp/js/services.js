@@ -5,14 +5,14 @@ Hyphenator.config({hyphenchar:'|', minwordlength:3});
 var ioLeggoServices = angular.module('ioLeggoServices', ['ngResource']);
 
 ioLeggoServices.factory('Stories', function($resource){
-    return $resource('/stories/');
+    return $resource('/api/stories/');
 });
 
 ioLeggoServices.factory('Story', function($http) {
   var Story = {
     get: function(folder, title, callback) {
         var promise;
-        promise = $http.get('/story/?folder='+folder+'&title='+title).then(function (response) {
+        promise = $http.get('/api/story/?folder='+folder+'&title='+title).then(function (response) {
           callback(response.data);
         });
       return promise;

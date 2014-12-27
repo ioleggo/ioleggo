@@ -32,6 +32,6 @@ public class GitHubStoryServiceTest {
     }
 
     private GitHubStoryService gitHubStoryServiceFactory() {
-        return new GitHubStoryService("https://api.github.com", "https://raw.githubusercontent.com", "ioleggo", "scuolaticino2014", "ioleggo", "storie", "storie");
+        return new GitHubStoryService("https://api.github.com", "https://raw.githubusercontent.com", "ioleggo-read", "ioLeggo2024", "ioleggo", "storie", "storie");
     }
 }

@@ -10,9 +10,9 @@ ioLeggoServices.factory('Stories', function($resource){
 
 ioLeggoServices.factory('Story', function($http) {
   var Story = {
-    get: function(group, title, callback) {
+    get: function(folder, title, callback) {
         var promise;
-        promise = $http.get('/story/?group='+group+'&title='+title).then(function (response) {
+        promise = $http.get('/story/?folder='+folder+'&title='+title).then(function (response) {
           callback(response.data);
         });
       return promise;
@@ -26,11 +26,11 @@ ioLeggoServices.factory('Story', function($http) {
         }
     },
 
-    load: function(group, title, callback) {
+    load: function(folder, title, callback) {
         // We may use an array of objects instead of a bi-dimensional array but this way it's easier for the controller and directive
         var words = [[],[]];
         var syllables = [];
-        Story.get(group, title, function(story) {
+        Story.get(folder, title, function(story) {
             var storyWords = story.match(/\S+/g);
             if (storyWords !== undefined) {
                 storyWords.forEach(function(word, index, array) {
@@ -115,15 +115,15 @@ ioLeggoServices.factory('Config', function($location, $localStorage) {
         toReadColor: $localStorage.ioLeggoConfig.toReadColor,
         backgroundColor: $localStorage.ioLeggoConfig.backgroundColor,
 
-        store: function(group, title, index) {
-            if (group !== undefined && title !== undefined) {
-                $localStorage.ioLeggoStory = {"group": group, "title": title, "index": index};
+        store: function(folder, title, index) {
+            if (folder !== undefined && title !== undefined) {
+                $localStorage.ioLeggoStory = {"folder": folder, "title": title, "index": index};
             }
         },
 
         load: function() {
             if ($localStorage.ioLeggoStory === undefined) {
-                return {"group": undefined, "title": undefined, "index": -1};
+                return {"folder": undefined, "title": undefined, "index": -1};
             }
             return $localStorage.ioLeggoStory;
         },

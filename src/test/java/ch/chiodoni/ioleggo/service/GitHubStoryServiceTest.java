@@ -21,7 +21,7 @@ public class GitHubStoryServiceTest {
         List<StoryFolder> storyFolders = gitHubStoryServiceFactory().findStoryFolders();
         Assert.assertNotNull(storyFolders);
         Assert.assertTrue(storyFolders.size() > 0);
-        String story = gitHubStoryServiceFactory().findStory(storyFolders.get(0).getName(), storyFolders.get(0).getTitles().get(0));
+        String story = gitHubStoryServiceFactory().findStory(storyFolders.get(0).getFolder(), storyFolders.get(0).getTitles().get(0));
         Assert.assertNotNull(story);
         Assert.assertTrue(story.length() > 0);
     }

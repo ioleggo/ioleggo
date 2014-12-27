@@ -8,12 +8,12 @@ import java.util.List;
 
 public class StoryFolder {
 
-    private String name;
+    private String folder;
 
     private List<String> titles = new ArrayList<>();
 
-    public StoryFolder(String name) {
-        this.name = name;
+    public StoryFolder(String folder) {
+        this.folder = folder;
     }
 
     public StoryFolder addTitle(String title) {
@@ -21,8 +21,8 @@ public class StoryFolder {
         return this;
     }
 
-    public String getName() {
-        return name;
+    public String getFolder() {
+        return folder;
     }
 
     public List<String> getTitles() {

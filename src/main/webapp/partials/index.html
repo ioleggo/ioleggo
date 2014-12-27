@@ -12,10 +12,10 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="dropdown" ng-repeat="storyGroup in stories|orderBy:'group'">
-                    <a data-toggle="dropdown" class="dropdown-toggle">{{storyGroup.group}} <b class="caret"></b></a>
+                <li class="dropdown" ng-repeat="storyFolder in titles|orderBy:'folder'">
+                    <a data-toggle="dropdown" class="dropdown-toggle">{{storyFolder.folder}} <b class="caret"></b></a>
                     <ul id="ddd" class="dropdown-menu scrollable-menu">
-                        <li ng-repeat="story in storyGroup.stories|orderBy:'toString()'"><a ng-click="loadStory(storyGroup.group, story);">{{story}}</a></li>
+                        <li ng-repeat="title in storyFolder.titles|orderBy:'toString()'"><a ng-click="loadStory(storyFolder.folder, title);">{{title}}</a></li>
                     </ul>
                 </li>
             </ul>

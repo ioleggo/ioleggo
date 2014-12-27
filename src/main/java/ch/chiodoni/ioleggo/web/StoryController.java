@@ -15,8 +15,6 @@ public class StoryController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(StoryController.class);
 
-//    public static final String BR = " <br> ";
-
     @Autowired
     private GitHubStoryService storyService;
 
@@ -32,21 +30,4 @@ public class StoryController {
         return storyService.findStory(folder, title);
     }
 
-
-    /*
-    private String toJSON(Map<String, List<String>> storiesFolder) {
-        String json = "[";
-        for (String folder : storiesFolder.keySet()) {
-            if (!storiesFolder.get(folder).isEmpty()) {
-                json = json.concat("{\"group\":\"").concat(folder.replaceAll(storiesDir, "")).concat("\",");
-                json = json.concat("\"stories\":[");
-                for (String file : storiesFolder.get(folder)) {
-                    json = json.concat("\"").concat(file.replaceAll(storiesExt, "")).concat("\",");
-                }
-                json = json.substring(0, json.length() - 1).concat("]},");
-            }
-        }
-        return json.substring(0, json.length() - 1).concat("]");
-    }
-    */
 }

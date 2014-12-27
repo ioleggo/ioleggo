@@ -134,7 +134,7 @@ public class GitHubStoryService {
                     .parallel()
                     .map(namedItem -> {
                         StoryFolder storyFolder = new StoryFolder(namedItem.name);
-                        storyRepo.stories(owner, repo, folder, storyFolder.getName())
+                        storyRepo.stories(owner, repo, folder, storyFolder.getFolder())
                                 .forEach(story -> storyFolder.addTitle(story.name));
                         return storyFolder;
                     })

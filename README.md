@@ -1,7 +1,7 @@
 ioLeggo
 =======
 
-Un programma per allenare la lettura, http://ioleggo.heroku.com
+Un programma per allenare la lettura, https://ioleggo.herokuapp.com/
 
 Contatto
 --------

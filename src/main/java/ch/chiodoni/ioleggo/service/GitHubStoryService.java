@@ -1,9 +1,8 @@
 package ch.chiodoni.ioleggo.service;
 
+import ch.chiodoni.ioleggo.Application;
 import ch.chiodoni.ioleggo.model.ResourceNotFoundException;
 import ch.chiodoni.ioleggo.model.StoryFolder;
-import com.codahale.metrics.ConsoleReporter;
-import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Timer;
 import com.squareup.okhttp.OkHttpClient;
 import org.slf4j.LoggerFactory;
@@ -33,7 +32,6 @@ import static com.codahale.metrics.MetricRegistry.name;
 public class GitHubStoryService {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(GitHubStoryService.class);
-    private static final MetricRegistry METRICS = new MetricRegistry();
 
     private String owner;
 
@@ -45,8 +43,8 @@ public class GitHubStoryService {
 
     private StoryFile storyFile;
 
-    private final Timer findStoryResponseTimer = METRICS.timer(name(GitHubStoryService.class, "findStory"));
-    private final Timer findStoryFoldersResponseTimer = METRICS.timer(name(GitHubStoryService.class, "findStoryFolders"));
+    private Timer findStoryResponseTimer;
+    private Timer findStoryFoldersResponseTimer;
 
     private static class NamedItem {
         String name;
@@ -82,11 +80,9 @@ public class GitHubStoryService {
         this.owner = owner;
         this.repo = repo;
         this.folder = folder;
-        ConsoleReporter reporter = ConsoleReporter.forRegistry(METRICS)
-                .convertRatesTo(TimeUnit.SECONDS)
-                .convertDurationsTo(TimeUnit.MILLISECONDS)
-                .build();
-        reporter.start(1, TimeUnit.MINUTES);
+
+        this.findStoryResponseTimer = Application.metricRegistry().timer(name(GitHubStoryService.class, "findStory"));
+        this.findStoryFoldersResponseTimer = Application.metricRegistry().timer(name(GitHubStoryService.class, "findStoryFolders"));
 
         OkHttpClient okHttpClient = new OkHttpClient();
         okHttpClient.setConnectTimeout(1, TimeUnit.SECONDS);

@@ -2,12 +2,17 @@ package ch.chiodoni.ioleggo.service;
 
 import ch.chiodoni.ioleggo.model.ResourceNotFoundException;
 import ch.chiodoni.ioleggo.model.StoryFolder;
+import com.codahale.metrics.ConsoleReporter;
+import com.codahale.metrics.MetricRegistry;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class GitHubStoryServiceTest {
+
+
 
     @Test
     public void testFindStoryFolders() {
@@ -34,4 +39,5 @@ public class GitHubStoryServiceTest {
     private GitHubStoryService gitHubStoryServiceFactory() {
         return new GitHubStoryService("https://api.github.com", "https://raw.githubusercontent.com", "ioleggo-read", "ioLeggo2024", "ioleggo", "storie", "storie");
     }
+
 }

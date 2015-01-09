@@ -1,4 +1,4 @@
-package ch.chiodoni.ioleggo.service;
+package ch.chiodoni.ioleggo.config;
 
 import retrofit.RequestInterceptor;
 

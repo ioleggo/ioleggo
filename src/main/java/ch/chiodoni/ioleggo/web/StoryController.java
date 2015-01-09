@@ -1,10 +1,11 @@
 package ch.chiodoni.ioleggo.web;
 
 import ch.chiodoni.ioleggo.model.StoryFolder;
-import ch.chiodoni.ioleggo.service.GitHubStoryService;
+import ch.chiodoni.ioleggo.service.StoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +17,9 @@ public class StoryController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(StoryController.class);
 
-    @Autowired
-    private GitHubStoryService storyService;
+    @Autowired(required = true)
+    @Qualifier("cachedStoryService")
+    private StoryService storyService;
 
     @RequestMapping(value = "/stories", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<StoryFolder> stories() {

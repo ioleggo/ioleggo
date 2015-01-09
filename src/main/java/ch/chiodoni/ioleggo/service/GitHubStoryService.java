@@ -1,12 +1,13 @@
 package ch.chiodoni.ioleggo.service;
 
 import ch.chiodoni.ioleggo.Application;
+import ch.chiodoni.ioleggo.config.BasicAuthRequestInterceptor;
 import ch.chiodoni.ioleggo.model.ResourceNotFoundException;
 import ch.chiodoni.ioleggo.model.StoryFolder;
 import com.codahale.metrics.Timer;
 import com.squareup.okhttp.OkHttpClient;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.cache.annotation.Cacheable;
 import retrofit.ErrorHandler;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -29,9 +30,9 @@ import java.util.stream.Collectors;
 
 import static com.codahale.metrics.MetricRegistry.name;
 
-public class GitHubStoryService {
+public class GitHubStoryService implements StoryService {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(GitHubStoryService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GitHubStoryService.class);
 
     private String owner;
 
@@ -122,7 +123,7 @@ public class GitHubStoryService {
                 .build().create(StoryFile.class);
     }
 
-    @Cacheable("stories")
+    @Override
     public List<StoryFolder> findStoryFolders() {
         final Timer.Context context = findStoryFoldersResponseTimer.time();
         try {
@@ -142,7 +143,7 @@ public class GitHubStoryService {
         }
     }
 
-    @Cacheable("stories")
+    @Override
     public String findStory(String storyFolder, String title) {
         final Timer.Context context = findStoryResponseTimer.time();
         try {

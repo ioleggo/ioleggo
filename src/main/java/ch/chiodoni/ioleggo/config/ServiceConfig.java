@@ -2,8 +2,6 @@ package ch.chiodoni.ioleggo.config;
 
 import ch.chiodoni.ioleggo.service.GitHubStoryService;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.CacheManager;
-import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -34,11 +32,6 @@ public class ServiceConfig {
     @Bean
     public GitHubStoryService gitHubStoryService() {
         return new GitHubStoryService(endpoint, rawendpoint, username, password, owner, repo, folder);
-    }
-
-    @Bean
-    public CacheManager cacheManager() {
-        return new ConcurrentMapCacheManager("stories");
     }
 
 }

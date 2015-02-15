@@ -10,7 +10,7 @@
 
     <groupId>ch.chiodoni.ioleggo</groupId>
     <artifactId>ioleggo</artifactId>
-    <version>2.1</version>
+    <version>2.2-SNAPSHOT</version>
     <name>ioLeggo</name>
     <description>Un programma per allenare la lettura</description>
 
@@ -18,7 +18,7 @@
         <connection>scm:git:git@github.com:ioleggo/ioleggo.git</connection>
         <url>scm:git:git@github.com:ioleggo/ioleggo.git</url>
         <developerConnection>scm:git:git@github.com:ioleggo/ioleggo.git</developerConnection>
-        <tag>ioleggo-2.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <properties>

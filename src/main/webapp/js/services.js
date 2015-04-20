@@ -97,6 +97,7 @@ ioLeggoServices.factory('Config', function($location, $localStorage) {
             syllablesDelay: 150,
             hideTextBefore: false,
             hideTextAfter: true,
+            toUpper: false,
             fontSize: 300,
             fontColor: "rgb(0, 190, 120)",
             toReadColor: "rgb(255,255,255)",
@@ -107,6 +108,7 @@ ioLeggoServices.factory('Config', function($location, $localStorage) {
   $localStorage.ioLeggoConfig = {
         hideTextBefore: $localStorage.ioLeggoConfig.hideTextBefore,
         hideTextAfter: $localStorage.ioLeggoConfig.hideTextAfter,
+        toUpper: $localStorage.ioLeggoConfig.toUpper,
         syllabation: $localStorage.ioLeggoConfig.syllabation,
         syllablesDelay: $localStorage.ioLeggoConfig.syllablesDelay,
         wordsDelay: $localStorage.ioLeggoConfig.wordsDelay,
@@ -163,6 +165,7 @@ ioLeggoServices.factory('Config', function($location, $localStorage) {
             var readingMode = this.loadReadingModes()[readingMode];
             this.hideTextBefore = readingMode.hideTextBefore;
             this.hideTextAfter = readingMode.hideTextAfter;
+            this.toUpper = readingMode.toUpper;
             this.syllabation = readingMode.syllabation;
             this.syllablesDelay = readingMode.syllablesDelay;
             this.wordsDelay = readingMode.wordsDelay;
